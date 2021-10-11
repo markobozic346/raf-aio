@@ -14,7 +14,7 @@ class ScheduleService {
 
         // Examine the text in the response
         const jsonData = response.json();
-        return jsonData.then((data) => data);
+        return jsonData.then((data) => data[0]);
       })
       .catch(function (err) {
         console.log("Fetch Error :-S", err);
