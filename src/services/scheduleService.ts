@@ -19,7 +19,7 @@ class ScheduleService {
 
     return {
       headings: tableHeaderRow,
-      ...organizedData,
+      scheduleData: [...organizedData],
     };
   }
 
