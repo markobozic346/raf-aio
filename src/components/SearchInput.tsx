@@ -1,9 +1,13 @@
-import { Box } from "@chakra-ui/react";
+import { Box, Input } from "@chakra-ui/react";
 
 interface Props {}
 
 const SearchInput = (props: Props) => {
-  return <Box></Box>;
+  return (
+    <Box>
+      <Input w="100%" />
+    </Box>
+  );
 };
 
 export default SearchInput;
