@@ -1,23 +1,14 @@
 import { useState, useEffect } from "react";
 import { Box } from "@chakra-ui/react";
 
-import { scheduleService } from "../services/scheduleService";
-import MyTable from "../components/Table";
+import { scheduleService } from "../../services/scheduleService";
+import MyTable from "../../components/Table";
 import React from "react";
+import { useScheduleContext } from "./schedule-context";
 
-interface Props {}
+const ScheduleTable = () => {
+  const { data } = useScheduleContext();
 
-const ScheduleTable = (props: Props) => {
-  const [data, setData] = useState<any>();
-
-  useEffect(() => {
-    getScheduleData();
-  }, []);
-  console.log(data);
-  const getScheduleData = async () => {
-    const temp = await scheduleService.fetchScheduleData();
-    setData(temp);
-  };
   const columns = React.useMemo(
     () => [
       {

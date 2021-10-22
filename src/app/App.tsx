@@ -1,11 +1,11 @@
-import { Box } from "@chakra-ui/react";
-import ScheduleTable from "./ScheduleTable";
+import ScheduleProvider from "./home/ScheduleProvider";
+import ScheduleTable from "./home/ScheduleTable";
 
 function App() {
   return (
-    <Box>
+    <ScheduleProvider>
       <ScheduleTable />
-    </Box>
+    </ScheduleProvider>
   );
 }
 
