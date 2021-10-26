@@ -2,7 +2,8 @@ import { createContext, useContext } from "react";
 
 interface ScheduleContextType {
   // data: DataType | undefined;
-  data: any;
+  filteredData: any;
+  onSearch: (value: string) => void;
 }
 
 export type DataType = {
