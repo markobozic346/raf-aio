@@ -17,13 +17,13 @@ const ScheduleProvider = (props: Props) => {
 
   //filter data
   useMemo(() => {
-    // const filtered =
-    //   data &&
-    //   data.scheduleData.length > 0 &&
-    //   data.scheduleData.filter((lecture: any) =>
-    //     lecture.group.includes(search)
-    //   );
-    // setFilteredData({ ...data, scheduleData: filtered });
+    const filtered =
+      data &&
+      data.scheduleData.length > 0 &&
+      data.scheduleData.filter((lecture: any) =>
+        lecture.group.includes(search)
+      );
+    setFilteredData({ ...data, scheduleData: filtered });
   }, [data, search]);
 
   //fetch data

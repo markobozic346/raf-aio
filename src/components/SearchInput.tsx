@@ -13,7 +13,11 @@ const SearchInput = (props: Props) => {
 
   return (
     <Box>
-      <Input w="100%" onChange={handleChange} />
+      <Input
+        w="100%"
+        placeholder="unesi ime grupe npr 1s1"
+        onChange={handleChange}
+      />
     </Box>
   );
 };
