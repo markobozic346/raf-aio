@@ -29,6 +29,7 @@ const ScheduleProvider = (props: Props) => {
   //fetch data
   const getScheduleData = async () => {
     const temp = await scheduleService.fetchScheduleData();
+
     setData(temp);
     setFilteredData(temp);
   };

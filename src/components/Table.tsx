@@ -59,7 +59,6 @@ function MyTable({ columns, data }: Props) {
     usePagination
   );
 
-  // Render the UI for your table
   return (
     <>
       <pre>

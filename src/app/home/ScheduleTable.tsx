@@ -7,38 +7,42 @@ import { useScheduleContext } from "./schedule-context";
 const ScheduleTable = () => {
   const { filteredData: data } = useScheduleContext();
 
+  const isFetched = data?.headings?.length > 0;
+
   const columns = useMemo(
     () => [
       {
-        Header: data?.headings[0] || "",
+        Header: isFetched ? data?.headings[1] : "",
         accessor: "subject",
       },
       {
-        Header: data?.headings[1] || "",
+        Header: isFetched ? data?.headings[2] : "",
         accessor: "year",
       },
       {
-        Header: data?.headings[2] || "",
+        Header: isFetched ? data?.headings[3] : "",
         accessor: "group",
       },
       {
-        Header: data?.headings[3] || "",
+        Header: isFetched ? data?.headings[4] : "",
         accessor: "zoomUrl",
         Cell: ({ cell }: any) => <a href={cell.value}>{cell.value}</a>,
       },
       {
-        Header: data?.headings[4] || "",
+        Header: isFetched ? data?.headings[5] : "",
         accessor: "eLearningUrl",
       },
       {
-        Header: data?.headings[5] || "",
+        Header: isFetched ? data?.headings[6] : "",
         accessor: "info",
       },
     ],
-    [data]
+    []
   );
   return (
-    <Box>{data && <MyTable columns={columns} data={data.scheduleData} />}</Box>
+    <Box>
+      {isFetched && <MyTable columns={columns} data={data.scheduleData} />}
+    </Box>
   );
 };
 
