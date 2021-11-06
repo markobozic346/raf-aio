@@ -11,7 +11,7 @@ class ScheduleService {
     const organizedData = rawData.values.map((lecture: any) => ({
       subject: lecture[0],
       year: lecture[1],
-      group: lecture[2],
+      group: typeof lecture[2] === "string" ? lecture[2] : `${lecture[2]}`,
       zoomUrl: lecture[3],
       eLearningUrl: lecture[4],
       info: lecture[5],
