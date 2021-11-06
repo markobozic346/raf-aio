@@ -1,8 +1,9 @@
 import { useMemo } from "react";
-import { Box } from "@chakra-ui/react";
+import { Box, Button } from "@chakra-ui/react";
 
 import MyTable from "../../components/Table";
 import { useScheduleContext } from "./schedule-context";
+import UrlButton from "../../components/UrlButton";
 
 const ScheduleTable = () => {
   const { filteredData: data } = useScheduleContext();
@@ -12,28 +13,35 @@ const ScheduleTable = () => {
   const columns = useMemo(
     () => [
       {
-        Header: isFetched ? data?.headings[1] : "",
+        Header: "Predmet",
         accessor: "subject",
       },
       {
-        Header: isFetched ? data?.headings[2] : "",
+        Header: "Godina",
         accessor: "year",
       },
       {
-        Header: isFetched ? data?.headings[3] : "",
+        Header: "Grupa",
         accessor: "group",
       },
       {
-        Header: isFetched ? data?.headings[4] : "",
+        Header: "Zoom Url",
         accessor: "zoomUrl",
-        Cell: ({ cell }: any) => <a href={cell.value}>{cell.value}</a>,
+        Cell: ({ cell }: any) =>
+          cell.value && (
+            <UrlButton text="Zoom Url" url={cell.value} color="blue" />
+          ),
       },
       {
-        Header: isFetched ? data?.headings[5] : "",
+        Header: "E-learning",
         accessor: "eLearningUrl",
+        Cell: ({ cell }: any) =>
+          cell.value && (
+            <UrlButton text="E-learning" url={cell.value} color="orange" />
+          ),
       },
       {
-        Header: isFetched ? data?.headings[6] : "",
+        Header: "Napomene",
         accessor: "info",
       },
     ],
