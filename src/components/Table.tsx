@@ -31,16 +31,12 @@ interface Props {
 }
 
 function MyTable({ columns, data }: Props) {
-  // Use the state and functions returned from useTable to build your UI
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     prepareRow,
-    page, // Instead of using 'rows', we'll use page,
-    // which has only the rows for the active page
-
-    // The rest of these things are super handy, too ;)
+    page,
     canPreviousPage,
     canNextPage,
     pageOptions,
@@ -61,21 +57,6 @@ function MyTable({ columns, data }: Props) {
 
   return (
     <>
-      <pre>
-        <code>
-          {/* {JSON.stringify(
-            {
-              pageIndex,
-              pageSize,
-              pageCount,
-              canNextPage,
-              canPreviousPage,
-            },
-            null,
-            2
-          )} */}
-        </code>
-      </pre>
       <Table {...getTableProps()}>
         <Thead>
           {headerGroups.map((headerGroup) => (
