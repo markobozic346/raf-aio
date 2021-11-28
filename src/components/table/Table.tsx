@@ -26,7 +26,7 @@ interface Props {
 }
 
 function MyTable({ columns, data }: Props) {
-  const [isSmallScreen] = useMediaQuery('(max-width: 700px)');
+  const [isSmallScreen] = useMediaQuery("(max-width: 700px)");
   const {
     getTableProps,
     getTableBodyProps,
@@ -54,19 +54,26 @@ function MyTable({ columns, data }: Props) {
     <>
       <Table {...getTableProps()}>
         <Thead>
-          {!isSmallScreen && headerGroups.map((headerGroup, i) => (
-            <Tr {...headerGroup.getHeaderGroupProps()}>
-              {headerGroup.headers.map((column) => (
-                <Th {...column.getHeaderProps()}>{column.render("Header")}</Th>
-              ))}
-            </Tr>
-          ))} 
+          {!isSmallScreen &&
+            headerGroups.map((headerGroup, i) => (
+              <Tr {...headerGroup.getHeaderGroupProps()}>
+                {headerGroup.headers.map((column) => (
+                  <Th {...column.getHeaderProps()}>
+                    {column.render("Header")}
+                  </Th>
+                ))}
+              </Tr>
+            ))}
         </Thead>
         <Tbody {...getTableBodyProps()}>
           {page.map((row) => {
             prepareRow(row);
             return (
-              <TableRow row={row} headerGroups={headerGroups} isSmallScreen={isSmallScreen}/>
+              <TableRow
+                row={row}
+                headerGroups={headerGroups}
+                isSmallScreen={isSmallScreen}
+              />
             );
           })}
         </Tbody>

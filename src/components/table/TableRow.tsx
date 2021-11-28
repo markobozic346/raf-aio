@@ -3,35 +3,36 @@ import { memo } from "react";
 import { HeaderGroup, Row } from "react-table";
 
 const rowMobileProps = {
-    display: "flex",
-    flexDirection: "column",
-    borderBottom: "1px solid black",
+  display: "flex",
+  flexDirection: "column",
+  borderBottom: "1px solid black",
 } as any;
 
 const cellMobileProps = {
-    display: "flex",
-    flexDirection: "row",
-    alignItems: "top",
-    justifyContent: "space-between",
+  display: "flex",
+  flexDirection: "row",
+  alignItems: "top",
+  justifyContent: "space-between",
 } as any;
 
 interface Props {
-    row: Row<object>
-    headerGroups: HeaderGroup<object>[]
-    isSmallScreen: boolean
+  row: Row<object>;
+  headerGroups: HeaderGroup<object>[];
+  isSmallScreen: boolean;
 }
 const TableRow = ({ row, headerGroups, isSmallScreen = false }: Props) => {
+  const rowProps = isSmallScreen ? rowMobileProps : {};
+  const cellProps = isSmallScreen ? cellMobileProps : {};
 
-    const rowProps = isSmallScreen ? rowMobileProps : {}
-    const cellProps = isSmallScreen ? cellMobileProps : {}
-    
-    const cellTextAlign = isSmallScreen ? 'right' : 'left';
+  const cellTextAlign = isSmallScreen ? "right" : "left";
   return (
     <Tr {...row.getRowProps()} {...rowProps}>
       {row.cells.map((cell, i) => {
         return (
-          <Td  {...cell.getCellProps()} {...cellProps}>
-                { isSmallScreen && <Box>{headerGroups[0]?.headers[i]?.render("Header")}:</Box>}
+          <Td {...cell.getCellProps()} {...cellProps}>
+            {isSmallScreen && (
+              <Box>{headerGroups[0]?.headers[i]?.render("Header")}:</Box>
+            )}
             <Box textAlign={cellTextAlign}>{cell.render("Cell")} </Box>
           </Td>
         );
