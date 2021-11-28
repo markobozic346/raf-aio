@@ -24,13 +24,15 @@ const TableRow = ({ row, headerGroups, isSmallScreen = false }: Props) => {
 
     const rowProps = isSmallScreen ? rowMobileProps : {}
     const cellProps = isSmallScreen ? cellMobileProps : {}
+    
+    const cellTextAlign = isSmallScreen ? 'right' : 'left';
   return (
     <Tr {...row.getRowProps()} {...rowProps}>
       {row.cells.map((cell, i) => {
         return (
           <Td  {...cell.getCellProps()} {...cellProps}>
                 { isSmallScreen && <Box>{headerGroups[0]?.headers[i]?.render("Header")}:</Box>}
-            <Box textAlign="right">{cell.render("Cell")} </Box>
+            <Box textAlign={cellTextAlign}>{cell.render("Cell")} </Box>
           </Td>
         );
       })}
