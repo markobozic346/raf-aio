@@ -1,9 +1,11 @@
 import { useMemo } from "react";
 import { Box } from "@chakra-ui/react";
 
-import MyTable from "../../components/Table";
+import MyTable from "../../components/table/Table";
 import { useScheduleContext } from "./schedule-context";
 import UrlButton from "../../components/UrlButton";
+import LoadingAnimation from "../../components/loading/LoadingAnimation";
+import SearchInput from "../../components/SearchInput";
 
 const ScheduleTable = () => {
   const { filteredData: data } = useScheduleContext();
@@ -49,7 +51,14 @@ const ScheduleTable = () => {
   );
   return (
     <Box>
-      {isFetched && <MyTable columns={columns} data={data.scheduleData} />}
+      {isFetched ? (
+        <>
+          <SearchInput />
+          <MyTable columns={columns} data={data.scheduleData} />{" "}
+        </>
+      ) : (
+        <LoadingAnimation />
+      )}
     </Box>
   );
 };
