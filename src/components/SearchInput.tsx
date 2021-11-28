@@ -12,9 +12,9 @@ const SearchInput = (props: Props) => {
   };
 
   return (
-    <Box>
+    <Box p='20px'>
       <Input
-        w="100%"
+      w="100%"
         placeholder="unesi ime grupe npr 1s1"
         onChange={handleChange}
       />

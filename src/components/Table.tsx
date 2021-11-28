@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import { memo } from "react";
 import { useTable, usePagination } from "react-table";
 import {
   Table,
@@ -11,12 +11,6 @@ import {
   IconButton,
   Text,
   Tooltip,
-  Select,
-  NumberInput,
-  NumberInputField,
-  NumberInputStepper,
-  NumberIncrementStepper,
-  NumberDecrementStepper,
 } from "@chakra-ui/react";
 import {
   ArrowRightIcon,
