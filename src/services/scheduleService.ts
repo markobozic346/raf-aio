@@ -40,7 +40,7 @@ class ScheduleService {
         return response.json().then((data) => this.organizeData(data[0]));
       })
       .catch((err) => {
-        console.log("Fetch Error :-S", err);
+        console.log("Fetch Error :", err);
       });
   }
 }
