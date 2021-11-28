@@ -10,6 +10,7 @@ import {
   Flex,
   IconButton,
   Text,
+  Box,
   Tooltip,
 } from "@chakra-ui/react";
 import {
@@ -18,6 +19,7 @@ import {
   ChevronRightIcon,
   ChevronLeftIcon,
 } from "@chakra-ui/icons";
+import MobileTableRow from "./MobileTableRow";
 
 interface Props {
   columns: any[];
@@ -38,8 +40,7 @@ function MyTable({ columns, data }: Props) {
     gotoPage,
     nextPage,
     previousPage,
-    setPageSize,
-    state: { pageIndex, pageSize },
+    state: { pageIndex},
   } = useTable(
     {
       columns,
@@ -65,13 +66,14 @@ function MyTable({ columns, data }: Props) {
           {page.map((row, i) => {
             prepareRow(row);
             return (
-              <Tr {...row.getRowProps()}>
-                {row.cells.map((cell) => {
-                  return (
-                    <Td {...cell.getCellProps()}>{cell.render("Cell")}</Td>
-                  );
-                })}
-              </Tr>
+              <MobileTableRow row={row}/>
+              // <Tr {...row.getRowProps()}>
+              //   {row.cells.map((cell) => {
+              //     return (
+              //       <Td  {...cell.getCellProps()}>{cell.render("Cell")}</Td>
+              //     );
+              //   })}
+              // </Tr>
             );
           })}
         </Tbody>
