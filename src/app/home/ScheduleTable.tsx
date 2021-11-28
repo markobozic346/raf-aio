@@ -1,7 +1,7 @@
 import { useMemo } from "react";
 import { Box } from "@chakra-ui/react";
 
-import MyTable from "../../components/Table";
+import MyTable from "../../components/table/Table";
 import { useScheduleContext } from "./schedule-context";
 import UrlButton from "../../components/UrlButton";
 

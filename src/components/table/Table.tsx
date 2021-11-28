@@ -4,14 +4,13 @@ import {
   Table,
   Thead,
   Tbody,
-  Tr,
-  Th,
-  Td,
   Flex,
   IconButton,
   Text,
-  Box,
   Tooltip,
+  useMediaQuery,
+  Th,
+  Tr,
 } from "@chakra-ui/react";
 import {
   ArrowRightIcon,
@@ -19,7 +18,7 @@ import {
   ChevronRightIcon,
   ChevronLeftIcon,
 } from "@chakra-ui/icons";
-import MobileTableRow from "./MobileTableRow";
+import TableRow from "./TableRow";
 
 interface Props {
   columns: any[];
@@ -27,6 +26,7 @@ interface Props {
 }
 
 function MyTable({ columns, data }: Props) {
+  const [isSmallScreen] = useMediaQuery('(max-width: 700px)');
   const {
     getTableProps,
     getTableBodyProps,
@@ -40,7 +40,7 @@ function MyTable({ columns, data }: Props) {
     gotoPage,
     nextPage,
     previousPage,
-    state: { pageIndex},
+    state: { pageIndex },
   } = useTable(
     {
       columns,
@@ -54,26 +54,19 @@ function MyTable({ columns, data }: Props) {
     <>
       <Table {...getTableProps()}>
         <Thead>
-          {headerGroups.map((headerGroup) => (
+          {!isSmallScreen && headerGroups.map((headerGroup, i) => (
             <Tr {...headerGroup.getHeaderGroupProps()}>
               {headerGroup.headers.map((column) => (
                 <Th {...column.getHeaderProps()}>{column.render("Header")}</Th>
               ))}
             </Tr>
-          ))}
+          ))} 
         </Thead>
         <Tbody {...getTableBodyProps()}>
-          {page.map((row, i) => {
+          {page.map((row) => {
             prepareRow(row);
             return (
-              <MobileTableRow row={row}/>
-              // <Tr {...row.getRowProps()}>
-              //   {row.cells.map((cell) => {
-              //     return (
-              //       <Td  {...cell.getCellProps()}>{cell.render("Cell")}</Td>
-              //     );
-              //   })}
-              // </Tr>
+              <TableRow row={row} headerGroups={headerGroups} isSmallScreen={isSmallScreen}/>
             );
           })}
         </Tbody>
