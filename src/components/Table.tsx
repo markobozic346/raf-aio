@@ -115,38 +115,6 @@ function MyTable({ columns, data }: Props) {
               {pageOptions.length}
             </Text>
           </Text>
-          <Text flexShrink={0}>Go to page:</Text>{" "}
-          <NumberInput
-            ml={2}
-            mr={8}
-            w={28}
-            min={1}
-            max={pageOptions.length}
-            onChange={(value: any) => {
-              const page = value ? value - 1 : 0;
-              gotoPage(page);
-            }}
-            defaultValue={pageIndex + 1}
-          >
-            <NumberInputField />
-            <NumberInputStepper>
-              <NumberIncrementStepper />
-              <NumberDecrementStepper />
-            </NumberInputStepper>
-          </NumberInput>
-          <Select
-            w={32}
-            value={pageSize}
-            onChange={(e) => {
-              setPageSize(Number(e.target.value));
-            }}
-          >
-            {[10, 20, 30, 40, 50].map((pageSize) => (
-              <option key={pageSize} value={pageSize}>
-                Show {pageSize}
-              </option>
-            ))}
-          </Select>
         </Flex>
 
         <Flex>
