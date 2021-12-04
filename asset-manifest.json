@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/raf-aio/static/css/main.d6d2b1af.chunk.css",
-    "main.js": "/raf-aio/static/js/main.15e4b5d2.chunk.js",
-    "main.js.map": "/raf-aio/static/js/main.15e4b5d2.chunk.js.map",
+    "main.js": "/raf-aio/static/js/main.b35e7456.chunk.js",
+    "main.js.map": "/raf-aio/static/js/main.b35e7456.chunk.js.map",
     "runtime-main.js": "/raf-aio/static/js/runtime-main.c0d3d234.js",
     "runtime-main.js.map": "/raf-aio/static/js/runtime-main.c0d3d234.js.map",
     "static/js/2.fc229b76.chunk.js": "/raf-aio/static/js/2.fc229b76.chunk.js",
@@ -15,6 +15,6 @@
     "static/js/runtime-main.c0d3d234.js",
     "static/js/2.fc229b76.chunk.js",
     "static/css/main.d6d2b1af.chunk.css",
-    "static/js/main.15e4b5d2.chunk.js"
+    "static/js/main.b35e7456.chunk.js"
   ]
 }
