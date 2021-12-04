@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useState } from "react";
+import { ChangeEvent, memo, useEffect, useState } from "react";
 import { Box, Input } from "@chakra-ui/react";
 import { useScheduleContext } from "../app/home/schedule-context";
 
@@ -7,14 +7,19 @@ const SearchInput = () => {
 
   const { onSearch } = useScheduleContext();
 
+  //on change save to storage and load
   const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
-    onSearch(e.target.value);
     localStorage.setItem("group", e.target.value);
+    setSavedSearch(getLocalValue())
   };
+  //on load get stored value if exist
   useEffect(() => {
-    const group = localStorage.getItem("group");
-    setSavedSearch(group);
+    setSavedSearch(getLocalValue());
   }, []);
+
+  const getLocalValue = () => {
+    return localStorage.getItem("group")
+  }
 
   savedSearch && onSearch(savedSearch);
 
@@ -30,4 +35,4 @@ const SearchInput = () => {
   );
 };
 
-export default SearchInput;
+export default memo(SearchInput);
