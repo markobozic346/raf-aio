@@ -11,6 +11,7 @@ import {
   useMediaQuery,
   Th,
   Tr,
+  TextProps,
 } from "@chakra-ui/react";
 import {
   ArrowRightIcon,
@@ -66,10 +67,11 @@ function MyTable({ columns, data }: Props) {
             ))}
         </Thead>
         <Tbody {...getTableBodyProps()}>
-          {page.map((row) => {
+          {page.map((row, id) => {
             prepareRow(row);
             return (
               <TableRow
+                key={`table-row-${id}`}
                 row={row}
                 headerGroups={headerGroups}
                 isSmallScreen={isSmallScreen}
@@ -102,14 +104,10 @@ function MyTable({ columns, data }: Props) {
 
         <Flex alignItems="center">
           <Text flexShrink={0} mr={8}>
-            Page{" "}
-            <Text fontWeight="bold" as="span">
-              {pageIndex + 1}
-            </Text>{" "}
-            of{" "}
-            <Text fontWeight="bold" as="span">
-              {pageOptions.length}
-            </Text>
+            Page
+            <Text {...textProps}>{pageIndex + 1}</Text>
+            of
+            <Text {...textProps}>{pageOptions.length}</Text>
           </Text>
         </Flex>
 
@@ -136,4 +134,7 @@ function MyTable({ columns, data }: Props) {
     </>
   );
 }
+
+const textProps = { fontWeight: "bold", as: "span", mx: "1" } as TextProps;
+
 export default memo(MyTable);

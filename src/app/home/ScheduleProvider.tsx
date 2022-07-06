@@ -1,19 +1,15 @@
-import { ReactNode, useEffect, useMemo, useState } from "react";
-import { scheduleService } from "../../services/scheduleService";
+import { ReactNode, useMemo, useState } from "react";
+import useData from "../../hooks/useData";
 import ScheduleContext from "./schedule-context";
 interface Props {
   children: ReactNode;
 }
 
 const ScheduleProvider = (props: Props) => {
-  //
   const [search, setSearch] = useState<string>("");
-  const [data, setData] = useState<any>();
   const [filteredData, setFilteredData] = useState<any>({});
-  //Data load
-  useEffect(() => {
-    getScheduleData();
-  }, []);
+
+  const { data } = useData();
 
   //filter data
   useMemo(() => {
@@ -25,14 +21,6 @@ const ScheduleProvider = (props: Props) => {
       );
     setFilteredData({ ...data, scheduleData: filtered });
   }, [data, search]);
-
-  //fetch data
-  const getScheduleData = async () => {
-    const temp = await scheduleService.fetchScheduleData();
-
-    setData(temp);
-    setFilteredData(temp);
-  };
 
   // methods
   const onSearch = (value: string) => {
